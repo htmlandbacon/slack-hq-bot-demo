@@ -33,12 +33,12 @@ app.post('/hello', function (req, res) {
 });
 
 
-app.get('/benism', function (req, res) {
+app.use('/benism', function (req, res) {
 
   var benism = require('./ben.json');
 
   var randomNumber = Math.floor(Math.random() * ((benism.length-1) - 0 + 1)) + 0;
-  
+
   var userName = req.body.user_name;
   var botPayload = {
     text : benism[randomNumber]
