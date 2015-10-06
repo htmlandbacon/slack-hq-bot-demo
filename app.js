@@ -1,15 +1,15 @@
 var express = require('express');
 var bodyParser = require('body-parser');
- 
+
 var app = express();
 var port = process.env.PORT || 3000;
- 
+
 // body parser middleware
 app.use(bodyParser.urlencoded({ extended: true }));
- 
+
 // test route
 app.get('/', function (req, res) { res.status(200).send('Hello world!') });
- 
+
 // error handler
 app.use(function (err, req, res, next) {
   console.error(err.stack);
@@ -21,7 +21,9 @@ app.post('/hello', function (req, res) {
   var botPayload = {
     text : 'Hello, ' + userName + '!'
   };
- 
+
+
+
   // avoid infinite loop
   if (userName !== 'slackbot') {
     return res.status(200).json(botPayload);
@@ -29,7 +31,26 @@ app.post('/hello', function (req, res) {
     return res.status(200).end();
   }
 });
- 
+
+
+app.get('/benism', function (req, res) {
+
+  var benism = require('./ben.json');
+
+  var randomNumber = Math.floor(Math.random() * ((benism.length-1) - 0 + 1)) + 0;
+  
+  var userName = req.body.user_name;
+  var botPayload = {
+    text : benism[randomNumber]
+  };
+  // avoid infinite loop
+  if (userName !== 'slackbot') {
+    return res.status(200).json(botPayload);
+  } else {
+    return res.status(200).end();
+  }
+});
+
 app.listen(port, function () {
   console.log('Server listening on port ' + port);
 });

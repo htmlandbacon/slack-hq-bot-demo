@@ -8,6 +8,7 @@
   },
   "dependencies": {
     "express": "^4.x.x",
+    "require":"latest",
     "body-parser": "^1.x.x"
   },
   "author": "",
