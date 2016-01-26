@@ -50,7 +50,7 @@ app.use('/benism', function (req, res) {
   return res.status(200).end();
 });
 
-app.get('/services', function (req, res) {
+app.use('/services', function (req, res) {
   rp('http://dwp-digital-services.herokuapp.com/api').then(function (data) {
     var dataset = JSON.parse(data);
     var datasetSorted = _.filter(dataset, {phase: 'beta'});
