@@ -6,10 +6,25 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "xo": {
+    "env": [
+      "mocha"
+    ],
+    "ignores": [
+      "app/assets/javascripts/**",
+      "coverage/**",
+      "govuk_modules/**",
+      "external_modules/**",
+      "public/**"
+    ],
+    "space": true
+  },
   "dependencies": {
+    "body-parser": "^1.x.x",
     "express": "^4.x.x",
-    "require":"latest",
-    "body-parser": "^1.x.x"
+    "request-promise": "^2.0.0",
+    "require": "latest",
+    "underscore": "^1.8.3"
   },
   "author": "",
   "license": "ISC"
