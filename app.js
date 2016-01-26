@@ -56,9 +56,9 @@ app.use('/services', function (req, res) {
     var datasetSorted = _.filter(dataset, {phase: 'beta'});
     var random = _.sample(datasetSorted, 1);
     var userName = req.body.user_name;
-    var botPayload = 'Service: ' + random[0].name + ' - ' + random[0].description;
+    var botPayload = 'Service: *' + random[0].name + '* - ' + random[0].description;
     if (random[0].phase_modifier !== undefined) {
-      botPayload = botPayload + ' (' + random[0].phase_modifier + ')';
+      botPayload = botPayload + ' *(' + random[0].phase_modifier + ')*';
     }
 
     // avoid infinite loop
